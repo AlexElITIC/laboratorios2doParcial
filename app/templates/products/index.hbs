@@ -1,0 +1,18 @@
+<h1>productos</h1>
+<h3>crear producto</h3>
+<form {{action 'createProduct' on="submit"}}>
+  {{input type="text" value=name}}
+  <br>
+  {{input type="text" value=calories}}
+  <button class="waves-effect waves-light btn">crear</button>
+</form>
+
+<div class="row">
+  {{#each model as |product|}}
+  <div class="col s4">
+    {{product-card title=product.name content=product.calories
+  				onUpdate=(action 'updateProduct' product)
+  			onDelete=(action 'deleteProduct' product)}}
+    </div>
+  {{/each}}
+</div>

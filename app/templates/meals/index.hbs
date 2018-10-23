@@ -1,0 +1,24 @@
+<h1>meals</h1>
+<form {{action 'createMeal' on="submit"}}>
+  {{input type="text" value=name}}
+  <button class="waves-effect waves-light btn">crear</button>
+</form>
+<div class="row">
+  {{#each model as |meal|}}
+  <div class="col 4">
+    {{#simple-card item=meal as |mealName editar eliminar mealID|}}
+    <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title">{{mealName}}</span>
+
+    </div>
+    <div class="card-action">
+    {{link-to editar 'meals.detail' mealID}}
+      <button class="waves-effect waves-light btn" {{action 'deleteMeal' meal}}>{{eliminar}}</button>
+    </div>
+  </div>
+    {{/simple-card}}
+
+  </div>
+  	{{/each}}
+</div>
